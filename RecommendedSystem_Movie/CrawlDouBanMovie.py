@@ -11,7 +11,7 @@ if __name__ == "__main__":
         response_content = urllib2.urlopen(source_url).read()
         soup = BeautifulSoup(response_content, "lxml", from_encoding="utf-8")
         tag_col = soup.find_all(name="table", attrs={"class": "tagCol"})[0]
-        for tag in tag_col.find_all(name="a", attrs={"class": "tag"}):
+        for tag in tag_col.find_all(name="a"):
             sub_url = ("https://movie.douban.com" + tag["href"]).encode("utf-8")
             sub_response_content = urllib2.urlopen(sub_url).read()
             sub_soup = BeautifulSoup(sub_response_content, "lxml", from_encoding="utf-8")
